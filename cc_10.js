@@ -41,3 +41,25 @@ class Order {
 let order1 = new Order (501, product1, 2);
 console.log(order1.getOrderDetails()); // Expected output: Order ID: 501, Product: Laptop, Quantity: 2, Total Price: $2400
 product1.getDetails(); // Expected output: Product: Laptop, ID: 101, Price: $1200, Stock: 5
+
+// Task 3: Creating an Inventory Class
+
+class Inventory {
+    constructor(products) {
+        this.products = [];
+    }
+
+    addProduct(product) {
+        this.products.push(product)
+    }
+
+    listProducts() {
+        this.products.forEach(product => product.getDetails());
+    }
+}
+
+let inventory = new Inventory();
+inventory.addProduct(product1);
+//console.log(`Inventory: ${inventory.listProducts()}`);
+console.log("Inventory:")
+inventory.listProducts(); // Expected output: Product: Laptop, ID: 101, Price: $1200, Stock: 5
