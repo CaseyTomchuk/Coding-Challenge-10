@@ -45,8 +45,9 @@ product1.getDetails(); // Expected output: Product: Laptop, ID: 101, Price: $120
 // Task 3: Creating an Inventory Class
 
 class Inventory {
-    constructor(products) {
+    constructor(products, orders) {
         this.products = [];
+        this.orders = [];
     }
 
     addProduct(product) {
@@ -56,6 +57,18 @@ class Inventory {
     listProducts() {
         this.products.forEach(product => product.getDetails());
     }
+
+// Task 4:
+
+    placeOrderID(orderID, product, quantity) {
+        let order = new Order(orderID, product, quantity); // Create a new order
+        this.orders.push(order); // Add the order to the orders array
+    }
+
+    listOrders() {
+        this.orders.forEach(order => console.log(order.getOrderDetails()));
+    }
+
 }
 
 let inventory = new Inventory();
@@ -63,3 +76,9 @@ inventory.addProduct(product1);
 //console.log(`Inventory: ${inventory.listProducts()}`);
 console.log("Inventory:")
 inventory.listProducts(); // Expected output: Product: Laptop, ID: 101, Price: $1200, Stock: 5
+
+// Task 4: Implementing Order Management
+
+inventory.placeOrderID(601, product1, 2) // Order is placed, stock decreases
+inventory.listOrders(); // lists the orders that we have placed Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
+product1.getDetails(); // Stock succesfully decreases when an order is placed!!! Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
